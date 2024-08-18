@@ -1,0 +1,13 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <include file="classpath:db/changelog/changes/01-create-igreja.sql"/>
+    <include file="classpath:db/changelog/changes/02-create-pessoa.sql"/>
+    <include file="classpath:db/changelog/changes/03-create-celula.sql"/>
+    <include file="classpath:db/changelog/changes/04-add-celula-to-pessoa.sql"/>
+    <include file="classpath:db/changelog/changes/05-add-foreign-keys.sql"/>
+
+</databaseChangeLog>
