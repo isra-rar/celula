@@ -9,5 +9,6 @@
     <include file="classpath:db/changelog/changes/03-create-celula.sql"/>
     <include file="classpath:db/changelog/changes/04-add-celula-to-pessoa.sql"/>
     <include file="classpath:db/changelog/changes/05-add-foreign-keys.sql"/>
+    <include file="classpath:db/changelog/changes/06-create-contribuicao-contribuinte.sql"/>
 
 </databaseChangeLog>
