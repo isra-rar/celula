@@ -13,6 +13,8 @@ CREATE TABLE pessoa (
                         estado VARCHAR(2),
                         cep VARCHAR(10),
                         has_celula BOOLEAN NOT NULL,
+                        atribuicao VARCHAR(20) NOT NULL,
                         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                        updated_at TIMESTAMP
+                        updated_at TIMESTAMP,
+                        CONSTRAINT chk_atribuicao CHECK (atribuicao IN ('LIDER', 'LIDER_TREINAMENTO', 'ANFRITRIAO', 'MEMBRO'))
 );

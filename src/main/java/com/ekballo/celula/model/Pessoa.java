@@ -1,8 +1,7 @@
 package com.ekballo.celula.model;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import com.ekballo.celula.model.enums.Atribuicao;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -20,6 +19,9 @@ public class Pessoa extends BaseEntity {
     private Endereco endereco;
 
     private boolean hasCelula;
+
+    @Enumerated(EnumType.STRING)
+    private Atribuicao atribuicao;
 
     @ManyToOne
     private Celula celula;

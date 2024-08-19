@@ -4,6 +4,7 @@ import com.ekballo.celula.model.Celula;
 import com.ekballo.celula.model.Endereco;
 import com.ekballo.celula.model.Igreja;
 import com.ekballo.celula.model.Pessoa;
+import com.ekballo.celula.model.enums.Atribuicao;
 import com.ekballo.celula.repositories.CelulaRepository;
 import com.ekballo.celula.repositories.IgrejaRepository;
 import com.ekballo.celula.repositories.PessoaRepository;
@@ -70,6 +71,7 @@ public class DataInitialization implements CommandLineRunner {
                             .telefone(faker.phoneNumber().cellPhone())
                             .endereco(generateFakeEndereco())
                             .hasCelula(true)
+                            .atribuicao(faker.options().option(Atribuicao.class))
                             .celula(celula)
                             .build();
                     pessoaRepository.save(pessoa);
