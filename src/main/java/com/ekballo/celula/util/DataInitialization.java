@@ -5,6 +5,7 @@ import com.ekballo.celula.model.Endereco;
 import com.ekballo.celula.model.Igreja;
 import com.ekballo.celula.model.Pessoa;
 import com.ekballo.celula.model.enums.Atribuicao;
+import com.ekballo.celula.model.enums.DiaSemana;
 import com.ekballo.celula.repositories.CelulaRepository;
 import com.ekballo.celula.repositories.IgrejaRepository;
 import com.ekballo.celula.repositories.PessoaRepository;
@@ -13,6 +14,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,18 +42,18 @@ public class DataInitialization implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         if (igrejaRepository.count() == 0 && celulaRepository.count() == 0 && pessoaRepository.count() == 0) {
-            // Criar uma única Igreja
             Igreja igreja = new Igreja();
             igreja.setNome("Batista Farol");
             igrejaRepository.save(igreja);
 
-            // Criar duas Células associadas à Igreja
             List<Celula> celulas = new ArrayList<>();
 
             Celula celula1 = Celula.builder()
                     .nome("Célula Bancarios")
                     .igreja(igreja)
                     .endereco(generateFakeEndereco())
+                    .diaSemana(faker.options().option(DiaSemana.TERCA))
+                    .horario(LocalTime.of(20,0))
                     .build();
             celulaRepository.save(celula1);
 
@@ -58,12 +61,13 @@ public class DataInitialization implements CommandLineRunner {
                     .nome("Célula Cabo Branco")
                     .igreja(igreja)
                     .endereco(generateFakeEndereco())
+                    .diaSemana(faker.options().option(DiaSemana.QUINTA))
+                    .horario(LocalTime.of(20,0))
                     .build();
             celulaRepository.save(celula2);
 
             Collections.addAll(celulas, celula1, celula2);
 
-            // Criar 10 Pessoas em cada Célula
             for (Celula celula : celulas) {
                 for (int i = 1; i <= 10; i++) {
                     Pessoa pessoa = Pessoa.builder()

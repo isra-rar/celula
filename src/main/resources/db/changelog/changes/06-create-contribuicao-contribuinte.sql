@@ -5,6 +5,8 @@ CREATE TABLE contribuicao (
                               celula_id BIGINT NOT NULL,
                               data_celula TIMESTAMP NOT NULL,
                               valor_arrecadado DECIMAL(19,2) NOT NULL,
+                              created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                              updated_at TIMESTAMP,
                               CONSTRAINT fk_contribuicao_celula FOREIGN KEY (celula_id) REFERENCES celula(id)
 );
 
@@ -15,6 +17,8 @@ CREATE TABLE contribuinte (
                               contribuicao_id BIGINT NOT NULL,
                               valor_contribuido DECIMAL(19,2) NOT NULL,
                               has_contribuiu BOOLEAN NOT NULL,
+                              created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                              updated_at TIMESTAMP,
                               CONSTRAINT fk_contribuinte_pessoa FOREIGN KEY (pessoa_id) REFERENCES pessoa(id),
                               CONSTRAINT fk_contribuinte_contribuicao FOREIGN KEY (contribuicao_id) REFERENCES contribuicao(id)
 );

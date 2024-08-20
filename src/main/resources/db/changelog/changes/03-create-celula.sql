@@ -12,7 +12,10 @@ CREATE TABLE celula (
                         cidade VARCHAR(255),
                         estado VARCHAR(2),
                         cep VARCHAR(10),
+                        dia_semana VARCHAR(10) NOT NULL,
+                        horario TIME NOT NULL,
                         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                         updated_at TIMESTAMP,
-                        CONSTRAINT fk_igreja FOREIGN KEY (igreja_id) REFERENCES igreja(id)
+                        CONSTRAINT fk_igreja FOREIGN KEY (igreja_id) REFERENCES igreja(id),
+                        CONSTRAINT chk_dia_semana CHECK (dia_semana IN ('SEGUNDA', 'TERCA', 'QUARTA', 'QUINTA', 'SEXTA', 'SABADO', 'DOMINGO'))
 );
